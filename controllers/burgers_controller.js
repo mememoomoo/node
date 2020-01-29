@@ -2,18 +2,18 @@ const express = require("express");
 const router = express.Router();
 const burger = require("../models/burger.js");
 
-router.get("/main", function(req, res) {
-  burger.all(function(burger_data) {
-    res.render("index", { burger_data });
-  })
-});
-
 router.get("/", function(req, res) {
   res.redirect("/main");
 });
 
 router.get("*", function(req, res) {
   res.redirect("/main");
+});
+
+router.get("/main", function(req, res) {
+  burger.all(function(burger_data) {
+    res.render("index", { burger_data });
+  })
 });
 
 router.put("/burgers/update", function(req, res){
